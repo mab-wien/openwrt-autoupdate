@@ -52,7 +52,7 @@ then
 	echo "download error ($BASE_LINK$FILENAME)";
 	exit;
 fi
-sha256sum $FILENAME | grep $SHA256SUMS
+sha256sum $TARGET_PATH | grep $SHA256SUMS
 if [ "$?" != "0" ]
 then
 	echo "sha256sum error ($SHA256SUMS)";
