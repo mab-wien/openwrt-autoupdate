@@ -18,7 +18,8 @@ curl -s https://raw.githubusercontent.com/mab-wien/openwrt-autoupdate/master/bin
 ````
 OPENWRT_HOSTS="host1 host2";
 USER_PACKAGES="luci-app-upnp luci-app-mwan3 tcpdump snmpd";
-curl -s https://raw.githubusercontent.com/mab-wien/openwrt-autoupdate/master/bin/remote-auto-update.sh | sh -s "$OPENWRT_HOSTS" "$USER_PACKAGES"
+EXTRA_COMMAND="sleep 30 && reboot";
+curl -s https://raw.githubusercontent.com/mab-wien/openwrt-autoupdate/master/bin/remote-auto-update.sh | sh -s "$OPENWRT_HOSTS" "$USER_PACKAGES" "$EXTRA_COMMAND"
 ````
 
 # Tested on
