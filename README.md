@@ -5,11 +5,21 @@ See http://downloads.openwrt.org/releases/
 
 ## First run
 Create configuration with user packages, example
+# local
 
-``
-USER_PACKAGES="luci-app-upnp luci-app-mwan3 tcpdump snmpd luci-app-openvpn openvpn-openssl";
-sh <(wget -O - https://raw.githubusercontent.com/mab-wien/openwrt-autoupdate/master/bin/auto-update.sh $USER_PACKAGES)
-``
+````
+opkg update
+opkg install curl
+USER_PACKAGES="curl";
+curl -s https://raw.githubusercontent.com/mab-wien/openwrt-autoupdate/master/bin/auto-update.sh | sh -s $USER_PACKAGES
+````
+# remote
+
+````
+OPENWRT_HOSTS="host1 host2";
+USER_PACKAGES="luci-app-upnp luci-app-mwan3 tcpdump snmpd";
+curl -s https://raw.githubusercontent.com/mab-wien/openwrt-autoupdate/master/bin/remote-auto-update.sh | sh -s "$OPENWRT_HOSTS" "$USER_PACKAGES"
+````
 
 # Tested on
 ## Devices
