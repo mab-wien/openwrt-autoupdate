@@ -59,4 +59,4 @@ then
 	exit;
 fi
 
-sysupgrade -v $FILENAME;
+sysupgrade -v $TARGET_PATH;
