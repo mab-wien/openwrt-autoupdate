@@ -8,10 +8,11 @@ fi
 
 OpenWrtDevices="$1";
 USER_PACKAGES="$2";
+TMP_FILENAME_PATH="/tmp/openwrt-auto-update.sh";
 
 cd /tmp/ || exit
-wget https://raw.githubusercontent.com/mab-wien/openwrt-autoupdate/master/bin/auto-update.sh
+wget https://raw.githubusercontent.com/mab-wien/openwrt-autoupdate/master/bin/auto-update.sh -O $TMP_FILENAME_PATH
 for host in $OpenWrtDevices
 do
-  ssh -oStrictHostKeyChecking=no "$host" "sh -s $USER_PACKAGES" < auto-update.sh
+  ssh -oStrictHostKeyChecking=no "$host" "sh -s $USER_PACKAGES" < $TMP_FILENAME_PATH
 done
