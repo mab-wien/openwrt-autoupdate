@@ -1,13 +1,14 @@
 #!/bin/bash
 
-if [ "$1" == "" ] || [ "$2" == "" ]  || [ "$3" != "" ]
+if [ "$1" == "" ] || [ "$2" == "" ]  || [ "$4" != "" ]
 then
-  echo "usage $0 'host1 host2 host3' 'curl tcpdump'"
+  echo "usage $0 'host1 host2 host3' 'curl tcpdump' ['sleep 30 && reboot'] "
   exit;
 fi
 
 OpenWrtDevices="$1";
 USER_PACKAGES="$2";
+EXTRA_COMMAND="$3";
 TMP_FILENAME_PATH="/tmp/openwrt-auto-update.sh";
 
 cd /tmp/ || exit
@@ -15,4 +16,8 @@ wget https://raw.githubusercontent.com/mab-wien/openwrt-autoupdate/master/bin/au
 for host in $OpenWrtDevices
 do
   ssh -oStrictHostKeyChecking=no "$host" "sh -s $USER_PACKAGES" < $TMP_FILENAME_PATH
+  if [ "$3" != "" ]
+  then
+    ssh -oStrictHostKeyChecking=no "$host" "$EXTRA_COMMAND";
+  fi
 done
