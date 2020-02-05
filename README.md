@@ -28,6 +28,7 @@ curl -s https://raw.githubusercontent.com/mab-wien/openwrt-autoupdate/master/bin
 - TP-Link Archer C7 v4
 - TP-Link Archer C7 v5
 - D-Link DIR-860L B1
+- GL.iNet GL-B1300 
 ## OpenWrt
 - 19.07.0
 - 19.07.1
