@@ -15,6 +15,7 @@ cd /tmp/ || exit
 wget https://raw.githubusercontent.com/mab-wien/openwrt-autoupdate/master/bin/auto-update.sh -O $TMP_FILENAME_PATH
 for host in $OpenWrtDevices
 do
+  echo "Connect to $host";
   ssh -oStrictHostKeyChecking=no "$host" "sh -s $USER_PACKAGES" < $TMP_FILENAME_PATH
   if [ "$3" != "" ]
   then

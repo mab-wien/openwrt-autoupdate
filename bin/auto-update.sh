@@ -22,6 +22,7 @@ function checkAndSetConfig {
 checkAndSetConfig $@;
 . /etc/os-release
 . $CONFIG_PATH;
+echo "Hostname: $(grep hostname /etc/config/system | awk '{print $3}')"
 echo "System Version: $VERSION";
 echo "Target: $OPENWRT_BOARD";
 MODEL="$(cat /etc/board.json  |jsonfilter -e '@.model.id' | tr ',' '_')"
