@@ -12,7 +12,7 @@ EXTRA_COMMAND="$3";
 TMP_FILENAME_PATH="/tmp/openwrt-auto-update.sh";
 
 cd /tmp/ || exit
-wget https://raw.githubusercontent.com/mab-wien/openwrt-autoupdate/master/bin/auto-update.sh -O $TMP_FILENAME_PATH
+wget https://raw.githubusercontent.com/easyinternetat/openwrt-autoupdate/master/bin/auto-update.sh -O $TMP_FILENAME_PATH
 for host in $OpenWrtDevices
 do
   echo "Connect to $host";
