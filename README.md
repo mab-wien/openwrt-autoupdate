@@ -18,7 +18,7 @@ curl -s https://raw.githubusercontent.com/easyinternetat/openwrt-autoupdate/mast
 ````
 OPENWRT_HOSTS="host1 host2";
 USER_PACKAGES="luci-app-upnp luci-app-mwan3 tcpdump snmpd";
-EXTRA_COMMAND="sleep 30 && reboot";
+EXTRA_COMMAND="sleep 70 && reboot";
 curl -s https://raw.githubusercontent.com/easyinternetat/openwrt-autoupdate/master/bin/remote-auto-update.sh | sh -s "$OPENWRT_HOSTS" "$USER_PACKAGES" "$EXTRA_COMMAND"
 ````
 
