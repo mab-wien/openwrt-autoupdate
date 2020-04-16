@@ -29,6 +29,16 @@ MODEL="$(cat /etc/board.json  |jsonfilter -e '@.model.id' | tr ',' '_')"
 echo "Model: $MODEL";
 
 CURRENT_VERSION="$(wget -q http://downloads.openwrt.org/releases/ -O - |grep -E '<a href="[0-9]+.[0-9]+.[0-9]+/">'|awk -F '</a>' '{print $1}'|awk -F '>' '{print $(NF)}'|sort -n -r|head -1)";
+if [ "$?" != "0" ]
+then
+	echo "wget error";
+	exit;
+fi
+if [ "$CURRENT_VERSION" == "" ]
+then
+	echo "error: current openwrt version not found";
+	exit;
+fi
 if [ "$CURRENT_VERSION" == "$VERSION" ]
 then
   if [ "$USER_PACKAGES" != "" ]
