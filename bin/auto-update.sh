@@ -41,19 +41,20 @@ then
 	echo "error: current openwrt version not found";
 	exit;
 fi
+echo "Current Realease: $CURRENT_VERSION";
 if [ "$CURRENT_VERSION" == "$VERSION" ]
 then
+  echo "System up-to-date";
   if [ "$USER_PACKAGES" != "" ]
   then
-    opkg update
+    #opkg update
     opkg install $USER_PACKAGES;
   fi
   opkg list-upgradable;
-  echo "System is up to date";
+  echo "Packages up-to-date";
 	exit;
 fi
-echo "Current Realease: $CURRENT_VERSION";
-
+echo "sysupgrade: $VERSION => $CURRENT_VERSION";
 
 FILENAME="openwrt-$CURRENT_VERSION-$(echo $OPENWRT_BOARD | tr '/' '-' )-$MODEL-squashfs-sysupgrade.bin"
 BASE_LINK="https://downloads.openwrt.org/releases/$CURRENT_VERSION/targets/$(echo $OPENWRT_BOARD | tr '-' '/' )/";
