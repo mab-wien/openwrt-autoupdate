@@ -28,7 +28,9 @@ echo "Target: $OPENWRT_BOARD";
 MODEL="$(cat /etc/board.json  |jsonfilter -e '@.model.id' | tr ',' '_')"
 echo "Model: $MODEL";
 
-CURRENT_VERSION="$(wget -q http://downloads.openwrt.org/releases/ -O - |grep -E '<a href="[0-9]+.[0-9]+.[0-9]+/">'|awk -F '</a>' '{print $1}'|awk -F '>' '{print $(NF)}'|sort -n -r|head -1)";
+opkg update
+opkg install libustream-openssl
+CURRENT_VERSION="$(wget --no-check-certificate -q https://downloads.openwrt.org/releases/ -O - |grep -E '<a href="[0-9]+.[0-9]+.[0-9]+/">'|awk -F '</a>' '{print $1}'|awk -F '>' '{print $(NF)}'|sort -n -r|head -1)";
 if [ "$?" != "0" ]
 then
 	echo "wget error";
@@ -54,10 +56,10 @@ echo "Current Realease: $CURRENT_VERSION";
 
 
 FILENAME="openwrt-$CURRENT_VERSION-$(echo $OPENWRT_BOARD | tr '/' '-' )-$MODEL-squashfs-sysupgrade.bin"
-BASE_LINK="http://downloads.openwrt.org/releases/$CURRENT_VERSION/targets/$(echo $OPENWRT_BOARD | tr '-' '/' )/";
-SHA256SUMS=$(wget $BASE_LINK/sha256sums -q -O -|grep $FILENAME | awk '{print $1}')
+BASE_LINK="https://downloads.openwrt.org/releases/$CURRENT_VERSION/targets/$(echo $OPENWRT_BOARD | tr '-' '/' )/";
+SHA256SUMS=$(wget --no-check-certificate $BASE_LINK/sha256sums -q -O -|grep $FILENAME | awk '{print $1}')
 TARGET_PATH="/tmp/$FILENAME";
-wget $BASE_LINK$FILENAME -O $TARGET_PATH
+wget --no-check-certificate $BASE_LINK$FILENAME -O $TARGET_PATH
 if [ "$?" != "0" ]
 then
 	echo "download error ($BASE_LINK$FILENAME)";
