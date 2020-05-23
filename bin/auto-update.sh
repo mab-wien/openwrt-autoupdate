@@ -28,7 +28,7 @@ checkAndSetConfig $@
 echo "Hostname: $(grep hostname /etc/config/system | awk '{print $3}')"
 echo "System Version: $VERSION"
 echo "Target: $OPENWRT_BOARD"
-MODEL="$(jsonfilter -e '@.model.id' < "/etc/board.json" | tr ',' '_')"
+MODEL="$(jsonfilter -e '@.model.id' <"/etc/board.json" | tr ',' '_')"
 echo "Model: $MODEL"
 
 opkg update
