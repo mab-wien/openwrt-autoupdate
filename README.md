@@ -35,6 +35,8 @@ curl -s https://raw.githubusercontent.com/easyinternetat/openwrt-autoupdate/mast
 - 19.07.2
 - 19.07.3
 - 19.07.4
+- 19.07.5
+- 19.07.6
 
 # Notice
 ## ssh
