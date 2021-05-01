@@ -5,9 +5,9 @@ ALLOW_UPDATE_RC="$1";
 shift;
 
 if [ "$ALLOW_UPDATE_RC" == "yes" ] || [ "$ALLOW_UPDATE_RC" == "y" ] || [ "$ALLOW_UPDATE_RC" == "1" ] || [ "$ALLOW_UPDATE_RC" == "ALLOW_UPDATE_RC" ]; then
-  $rc_regex="(-rc[0-9]+)?"
+  rc_regex="(-rc[0-9]+)?"
 else
-  $rc_regex=""
+  rc_regex=""
 fi
 
 function checkAndSetConfig() {
