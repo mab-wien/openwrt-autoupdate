@@ -39,7 +39,7 @@ echo "System Version: $VERSION"
 echo "Target: $OPENWRT_BOARD"
 MODEL="$(jsonfilter -e '@.model.id' <"/etc/board.json" | tr ',' '_')"
 echo "Model: $MODEL"
-MODELNAME="$(cat /etc/board.json | jsonfilter -e '@.model.name' | /bin/sed 's/-//g' | tr ' ' '-' | /bin/sed 's/-/_/' | awk '{print tolower($0)}')";
+MODELNAME="$(cat /etc/board.json | jsonfilter -e '@.model.name' | /bin/sed 's/^\([^\ ]\+\)-/\1/' | tr ' ' '-' | /bin/sed 's/-/_/' | awk '{print tolower($0)}')";
 echo "MODELNAME: $MODELNAME"
 
 
