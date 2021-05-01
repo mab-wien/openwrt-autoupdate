@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$1" == "" ] || [ "$2" == "" ] || [ "$4" != "" ]; then
-  echo "usage $0 'host1 host2 host3' 'curl tcpdump' ['sleep 30 && reboot'] "
+if [ "$1" == "" ] || [ "$2" == "" ] || [ "$5" != "" ]; then
+  echo "usage $0 'host1 host2 host3' 'curl tcpdump' ['sleep 30 && reboot'] [ALLOW_UPDATE_RC]"
   exit
 fi
 
