@@ -1,6 +1,8 @@
-# openwrt-autoupdate
-Automatic update of OpenWrt firmware image  and packages.
-See http://downloads.openwrt.org/releases/
+# openwrt-autoupdate [deprecated] (closed)
+Automatic update of OpenWrt firmware image and packages.
+## See
+- http://downloads.openwrt.org/releases/
+- https://openwrt.org/docs/guide-user/installation/sysupgrade.cli
 # Install
 
 ## First run
