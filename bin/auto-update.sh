@@ -1,6 +1,15 @@
 #!/bin/bash
 CONFIG_PATH="/etc/auto-update.conf"
 
+ALLOW_UPDATE_RC="$1";
+shift;
+
+if [ "$ALLOW_UPDATE_RC" == "yes" ] || [ "$ALLOW_UPDATE_RC" == "y" ] || [ "$ALLOW_UPDATE_RC" == "1" ]; then
+  $rc_regex="(-rc[0-9]+)?"
+else
+  $rc_regex=""
+fi
+
 function checkAndSetConfig() {
   if [ ! -f "$CONFIG_PATH" ]; then
     if [ "$1" == "" ]; then
@@ -33,7 +42,7 @@ echo "Model: $MODEL"
 
 opkg update
 opkg install libustream-openssl
-CURRENT_VERSION="$(wget --no-check-certificate -q https://downloads.openwrt.org/releases/ -O - | grep -E '<a href="[0-9]+.[0-9]+.[0-9]+/">' | awk -F '</a>' '{print $1}' | awk -F '>' '{print $(NF)}' | sort -n -r | head -1)"
+CURRENT_VERSION="$(wget --no-check-certificate -q https://downloads.openwrt.org/releases/ -O - | grep -E "<a href=\"[0-9]+.[0-9]+.[0-9]+$rc_regex/\">" | awk -F '</a>' '{print $1}' | awk -F '>' '{print $(NF)}' | sort -n -r | head -1)"
 # shellcheck disable=SC2181
 if [ "$?" != "0" ]; then
   echo "wget error"
