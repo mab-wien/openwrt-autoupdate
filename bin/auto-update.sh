@@ -39,6 +39,9 @@ echo "System Version: $VERSION"
 echo "Target: $OPENWRT_BOARD"
 MODEL="$(jsonfilter -e '@.model.id' <"/etc/board.json" | tr ',' '_')"
 echo "Model: $MODEL"
+MODELNAME="$(cat /etc/board.json | jsonfilter -e '@.model.name' | tr ' ' '-' | awk '{print tolower($0)}')";
+echo "MODELNAME: $MODELNAME"
+
 
 opkg update
 opkg install libustream-openssl
@@ -65,6 +68,11 @@ if [ "$CURRENT_VERSION" == "$VERSION" ]; then
   exit
 fi
 echo "sys-upgrade: $VERSION => $CURRENT_VERSION"
+
+if [[ $CURRENT_VERSION =~ ^[2-9].* ]]; then
+  # new URL-Layout on 21.02.0-rc1
+  MODEL="$MODELNAME";
+fi
 
 FILENAME="openwrt-$CURRENT_VERSION-$(echo "$OPENWRT_BOARD" | tr '/' '-')-$MODEL-squashfs-sysupgrade.bin"
 BASE_LINK="https://downloads.openwrt.org/releases/$CURRENT_VERSION/targets/$(echo "$OPENWRT_BOARD" | tr '-' '/')/"
