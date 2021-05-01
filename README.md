@@ -11,7 +11,8 @@ Create configuration with user packages, example
 opkg update
 opkg install curl
 USER_PACKAGES="curl";
-curl -s https://raw.githubusercontent.com/easyinternetat/openwrt-autoupdate/master/bin/auto-update.sh | sh -s $USER_PACKAGES
+ALLOW_UPDATE_RC="yes"
+curl -s https://raw.githubusercontent.com/easyinternetat/openwrt-autoupdate/master/bin/auto-update.sh | bash -s $ALLOW_UPDATE_RC $USER_PACKAGES
 ````
 # remote
 
@@ -19,7 +20,8 @@ curl -s https://raw.githubusercontent.com/easyinternetat/openwrt-autoupdate/mast
 OPENWRT_HOSTS="host1 host2";
 USER_PACKAGES="luci-app-upnp luci-app-mwan3 tcpdump snmpd";
 EXTRA_COMMAND="sleep 70 && reboot";
-curl -s https://raw.githubusercontent.com/easyinternetat/openwrt-autoupdate/master/bin/remote-auto-update.sh | sh -s "$OPENWRT_HOSTS" "$USER_PACKAGES" "$EXTRA_COMMAND"
+ALLOW_UPDATE_RC="yes"
+curl -s https://raw.githubusercontent.com/easyinternetat/openwrt-autoupdate/master/bin/remote-auto-update.sh | bash -s "$OPENWRT_HOSTS" "$USER_PACKAGES" "$EXTRA_COMMAND" "$ALLOW_UPDATE_RC"
 ````
 
 # Tested on
