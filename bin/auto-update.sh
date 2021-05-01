@@ -69,7 +69,7 @@ if [ "$CURRENT_VERSION" == "$VERSION" ]; then
 fi
 echo "sys-upgrade: $VERSION => $CURRENT_VERSION"
 
-if [[ $CURRENT_VERSION =~ ^[2-9].* ]]; then
+if echo "$CURRENT_VERSION" | grep -Eq '^[2-9]'; then
   # new URL-Layout on 21.02.0-rc1
   MODEL="$MODELNAME";
 fi
