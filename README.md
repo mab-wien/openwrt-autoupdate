@@ -43,7 +43,9 @@ curl -s https://raw.githubusercontent.com/easyinternetat/openwrt-autoupdate/mast
 - 19.07.6
 - 19.07.7
 ## OpenWrt 21.XX
-- from 19.07.7 not work (See https://git.openwrt.org/?p=openwrt/openwrt.git;a=commit;h=494f12c52df6767ec0fabf2b2fac8f453323a4c5, Image version mismatch: image 1.1, device 1.0. Please wipe config during upgrade (force required) or reinstall. Reason: Config cannot be migrated from swconfig to DSA)
+- D-Link DIR-860L B1 not work => from 19.07.7  (See https://git.openwrt.org/?p=openwrt/openwrt.git;a=commit;h=494f12c52df6767ec0fabf2b2fac8f453323a4c5, Image version mismatch: image 1.1, device 1.0. Please wipe config during upgrade (force required) or reinstall. Reason: Config cannot be migrated from swconfig to DSA)
+- TP-Link Archer C7 v2 (OK from 19.07.7)
+- TP-Link Archer C7 v4 (OK from 19.07.7)
 
 # Notice
 ## ssh
