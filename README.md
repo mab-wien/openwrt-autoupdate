@@ -48,6 +48,7 @@ curl -s https://raw.githubusercontent.com/easyinternetat/openwrt-autoupdate/mast
   - TP-Link Archer C7 v2 (OK from 19.07.7)
   - TP-Link Archer C7 v4 (OK from 19.07.7)
 - 21.02.0-rc3 (from 21.02.0-rc1)
+- 21.02.1
 # Notice
 ## ssh
 use authorized_keys
